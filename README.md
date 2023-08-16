@@ -20,5 +20,6 @@ add config.yaml to /my_childrens_voice_server/config
 $ conda create -n ["env"] python=3.11.4
 $ conda activate ["env"]
 $ cd my_childrens_voice_server
+$ conda install mysqlclient
 $ pip install -r requirements.txt
 $ python manage.py runserver
