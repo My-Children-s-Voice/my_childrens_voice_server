@@ -25,7 +25,8 @@ class Caregiver(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     caregiver = models.ForeignKey(Caregiver, on_delete=models.CASCADE, related_name="caregiver", null=True)
-
+    training_status = models.CharField(max_length=10, default='0')
+    
     class Meta:
         db_table='auth_profile'
 
