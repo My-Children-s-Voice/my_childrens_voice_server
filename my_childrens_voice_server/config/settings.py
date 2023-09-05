@@ -1,6 +1,7 @@
 from pathlib import Path
-import os
-import yaml
+import firebase_admin
+from firebase_admin import credentials
+import os, yaml
 
 CONFIG_FILE = './config/conf.yaml'
 # Add Security Settings in conf.yaml
@@ -10,6 +11,10 @@ with open(CONFIG_FILE, 'r', encoding='utf-8') as f:
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# FCM SDK 초기화
+cred_path = os.path.join(BASE_DIR, "config/firebaseAccountKey.json")
+cred = credentials.Certificate(cred_path)
+firebase_admin.initialize_app(cred)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -38,6 +43,7 @@ INSTALLED_APPS = [
 
     'config',
     'member',
+    'fcm',
 ]
 
 MIDDLEWARE = [
