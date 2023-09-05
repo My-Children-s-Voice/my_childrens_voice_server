@@ -46,6 +46,9 @@ class FCMToken(models.Model):
     token = models.CharField(max_length=255, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        db_table='fcm_token'
+
 class Inpatiant(models.Model):
     caregiver = models.ForeignKey(Caregiver, on_delete=models.CASCADE, related_name="inpatiant")
     inpatiant_name = models.CharField(max_length=20)
