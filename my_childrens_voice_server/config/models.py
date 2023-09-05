@@ -26,7 +26,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     caregiver = models.ForeignKey(Caregiver, on_delete=models.CASCADE, related_name="caregiver", null=True)
     training_status = models.CharField(max_length=10, default='0')
-    
+
     class Meta:
         db_table='auth_profile'
 
@@ -66,7 +66,7 @@ class InpatiantChildren(models.Model):
 
 class VoiceSample(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="voice_sample")
-    file_path = models.FileField(upload_to='voice_sample')
+    file_path = models.CharField(max_length=1024)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -75,7 +75,7 @@ class VoiceSample(models.Model):
 
 class VoiceCloiningModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="voice_cloining_model")
-    model_path = models.FileField(upload_to='voice_cloining_model')
+    model_path = models.CharField(max_length=1024)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
