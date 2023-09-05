@@ -41,6 +41,10 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
+class FCMToken(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="fcm_token")
+    token = models.CharField(max_length=255, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 class Inpatiant(models.Model):
     caregiver = models.ForeignKey(Caregiver, on_delete=models.CASCADE, related_name="inpatiant")
